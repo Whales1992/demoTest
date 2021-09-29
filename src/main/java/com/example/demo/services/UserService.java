@@ -34,7 +34,9 @@ public class UserService{
                 .map(object -> mapper.convertValue(object, UserDto.class))
                 .collect(Collectors.toList());
 
-        userRepository.saveAll(userDtoList);
+        try{
+            userRepository.saveAll(userDtoList);
+        }catch (Exception ex){}
 
         return userDtoList;
    }
